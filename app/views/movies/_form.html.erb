@@ -1,0 +1,78 @@
+<%= form_with(model: movie) do |form| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form>
+
+    <div class="form-group">
+      <%= form.label :title, "Título" %>
+      <%= form.text_field :title, class: "form-control"%>
+    </div>
+
+    <div class="form-inline">
+      <div class="form-group">
+        <%= form.label :cover_url, "Capa" %>
+        <%= form.text_field :cover_url, class: "form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :published_at, "Estreia" %>
+        <%= form.date_field :published_at, class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :sinopse, "Sinopse" %>
+      <%= form.text_area :sinopse, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :director_id, "Diretor" %>
+      <%= form.select(
+        :director_id,
+        options_for_select(
+            @director_options.map{ |director| [director.name, director.id] }
+          ), { include_blank: true, required: true }, class: "form-control list-group-item",
+        selected: movie.nil? ? movie.director_id : ""
+      )
+      %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :artist_ids, "Elenco" %>
+      <%= form.select(
+        :artist_ids,
+        options_for_select(
+            @artist_options.map{ |artist| [artist.name, artist.id] }
+          ), { include_blank: true, required: true }, class: "form-control list-group-item",
+        )
+      %>
+    </div>
+<!-- TODO: retornar um array
+    <div class="form-group custom-checkbox">
+      <%= form.label :category_ids, "Genero" %>
+      <div class="form-inline">
+        <% @category_options.each do |category| %>
+          <div class="form-control">
+            <%= form.check_box :category_ids, {class: "form-check-input "}, category.id, "unchecked-value" %>
+            <%= form.label :category_ids, category.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+-->
+    <div class="form-btn">
+      <%= link_to "Cancel", movies_path, class: "btn btn-danger cancel" %>
+      <%= form.submit "Salvar", class: "btn btn-danger primary" %>
+    </div>
+
+  </form>
+<% end %>

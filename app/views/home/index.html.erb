@@ -1,46 +1,51 @@
-<div class="card mb-3 col-12 dark-gray-6">
-  <div class="row g-0 rounded dark-gray-6">
-    <div class="col-md-6 mainCard">
-      <%= image_tag 'main-bg.png' %>
-    </div>
-    <div class="col-md-6">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<% @movies.each_with_index do |movie, i| %>
+  <% if i == 0 %>
+    <div id="main-card" class="card mb-3 col-12 dark-gray-6">
+      <div class="row g-0 rounded dark-gray-6">
+        <div class="col-md-4 mainCard">
+          <%= image_tag movie.cover_url %>
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %></h5>
+            <div class="card-inline">
+              <p class="text-muted">Diretor:</p>
+              <p class="card-text"><%= movie.director.name %></p>
+            </div>
+            <div class="card-inline">
+              <p class="text-muted">Estreia:</p>
+              <p class="card-text"><%= movie.published_at %></p>
+            </div>
+            <div class="card-inline">
+              <p class="text-muted">Gênero:</p>
+              <p class="card-text"><i>work in progress...</i></p>
+            </div>
+            <br/>
+            <div class="card-inline">
+              <p class="text-muted">Elenco:</p>
+              <p class="card-text"><i>work in progress...</i></p>
+            </div>
+            <p class="card-text sinopse"><%= movie.sinopse %></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated <%= date_formatting(movie.updated_at, 'home') %></small>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
 <div class="row">
-  <div class="col-sm-4">
-    <div class="card dark-gray-6">
-      <%= image_tag 'cover1.png', class: 'card-img-top' %>
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
+  <% @movies.each_with_index do |movie, i| %>
+    <% if i != 0 %>
+      <div class="col-sm-4">
+        <div class="card dark-gray-6">
+          <%= image_tag movie.cover_url, class: 'card-img-top' %>
+          <div class="card-body">
+            <p class="card-text sinopse"><%= movie.sinopse %></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card dark-gray-6">
-      <%= image_tag 'cover2.png', class: 'card-img-top' %>
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card dark-gray-6">
-      <%= image_tag 'cover3.png', class: 'card-img-top' %>
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+    <% end %>
+  <% end %>
+</div

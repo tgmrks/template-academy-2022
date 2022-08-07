@@ -1,0 +1,20 @@
+<div class="top-frame">
+    <h3>Artistas</h3>
+    <%= link_to "+ Novo", new_artist_path, :class=>"btn btn-danger primary" %>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-4" scope="col">Nome</th>
+      <th class="col-md-8" scope="col">Criado em</th>
+      <th class="col-md-0" scope="col">Ações</th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |artist| %>
+      <%= render artist %>
+    <% end %>
+  </tbody>
+</table>

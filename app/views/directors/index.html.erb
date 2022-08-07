@@ -1,0 +1,20 @@
+<div class="top-frame">
+    <h3>Diretores</h3>
+    <%= link_to "+ Novo", new_director_path, :class=>"btn btn-danger primary" %>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-4" scope="col">Nome</th>
+      <th class="col-md-8" scope="col">Criado em</th>
+      <th class="col-md-0" scope="col">Ações</th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @directors.each do |director| %>
+      <%= render director %>
+    <% end %>
+  </tbody>
+</table>

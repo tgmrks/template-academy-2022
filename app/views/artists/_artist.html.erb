@@ -1,0 +1,17 @@
+<div id="<%= dom_id artist %>">
+
+  <tr>
+    <td><%= artist.name %></td>
+    <td><%= date_formatting(artist.created_at, 'artist') %></td>
+    <td>
+      <div class="icon-btn">
+        <%= link_to edit_artist_path(artist), class: 'icon' do %>
+          <%= image_tag 'icons/editIcon.png', class: 'mt-2 mb-2' %>
+        <% end %>
+        <%= button_to artist, method: :delete, class: 'delete-btn' do %>
+          <%= image_tag 'icons/deleteIcon.png', class: 'mt-2 mb-2' %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</div>

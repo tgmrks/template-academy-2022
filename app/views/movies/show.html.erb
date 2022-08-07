@@ -1,0 +1,11 @@
+<div class="top-framArtistase">
+    <h3>Filme</h3>
+</div>
+<%= render @movie %>
+
+<div>
+  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
+  <%= link_to "Back to movies", movies_path %>
+
+  <%= button_to "Destroy this movie", @movie, method: :delete %>
+</div>

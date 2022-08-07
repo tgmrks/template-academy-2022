@@ -1,0 +1,22 @@
+<div class="top-frame">
+    <h3>Filmes</h3>
+    <%= link_to "+ Novo", new_movie_path, :class=>"btn btn-danger primary" %>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-6" scope="col">Título</th>
+      <th class="col-md-2" scope="col">Diretor</th>
+      <th class="col-md-2" scope="col">Gênero</th>
+      <th class="col-md-2" scope="col">Estreia em</th>
+      <th class="col-md-0" scope="col">Ações</th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <%= render movie %>
+    <% end %>
+  </tbody>
+</table>

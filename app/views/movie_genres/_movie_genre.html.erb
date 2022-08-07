@@ -1,0 +1,17 @@
+<div id="<%= dom_id movie_genre %>">
+
+  <tr>
+    <td><%= movie_genre.name %></td>
+    <td><%= date_formatting(movie_genre.created_at, 'genre') %></td>
+    <td>
+      <div class="icon-btn">
+        <%= link_to edit_movie_genre_path(movie_genre), class: 'icon' do %>
+          <%= image_tag 'icons/editIcon.png', class: 'mt-2 mb-2' %>
+        <% end %>
+        <%= button_to movie_genre, method: :delete, class: 'delete-btn' do %>
+          <%= image_tag 'icons/deleteIcon.png', class: 'mt-2 mb-2' %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</div>
